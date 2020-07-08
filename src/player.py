@@ -1,7 +1,8 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
-# create a Player class, define constructor and string methods
+# Create a Player class, define constructor and string methods
+# Add attributes for name, health, weapon, armor, current_room
 class Player:
     def __init__(self, name, health, weapon, armor, current_room):
         self.name = name
