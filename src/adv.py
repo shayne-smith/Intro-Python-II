@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -38,10 +39,14 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+# def __init__(self, name, health, weapon, armor, current_room, inventory):
+p1 = Player('Shayne', 100, 'Sword', 'Bronze', 'outside', ['bread'])
 
 # Write a loop that:
 #
+while input != 'quit':
 # * Prints the current room name
+    print(f'Current Room: {self.current_room}\nRoom Description: {self.description}')
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
