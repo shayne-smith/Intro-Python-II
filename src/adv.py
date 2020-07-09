@@ -5,7 +5,7 @@ from player import Player
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons",
+                     "North of you, the cave mouth beckons",
                      ["rope", "twigs"]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
@@ -56,8 +56,8 @@ possible_directions = ['n', 's', 'e', 'w']
 # Inventory commands
 inv_commands = ['i', 'inventory']
 
-# Action commands
-action_commands = ['get', 'take']
+# Pickup commands
+pickup_commands = ['get', 'take']
 
 # Write a loop that:
 while True:
@@ -87,13 +87,20 @@ while True:
     # check if command has 1 or 2 words
     if len(command) == 1:
         command = command[0][0] # extracts the first letter of command
-    elif len(command) == 2 and command[0] in action_commands:
-        print("action command")
+    elif len(command) == 2 and command[0] in pickup_commands:
         requested_item = command[1]
         for item in p1.current_room.items:
             if item == requested_item:
                 p1.current_room.items.remove(requested_item)
                 p1.inventory.append(requested_item)
+                item.on_take(requested_item)
+    elif len(command) == 2 and command[0] == 'drop':
+        dropped_item = command[1]
+        for item in p1.inventory:
+            if item == dropped_item:
+                p1.current_room.items.append(dropped_item)
+                p1.inventory.remove(dropped_item)
+                item.on_drop(dropped_item)
         
 
     # If the user enters a cardinal direction, attempt to move to the room there.
@@ -109,7 +116,7 @@ while True:
     elif command in inv_commands:
         print("Current inventory:")
         for item in p1.inventory:
-            print(f'{item}')
+            print(f'*** {item}')
         print()
 
     num_moves += 1

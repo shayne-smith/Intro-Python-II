@@ -12,3 +12,6 @@ class Item:
 
     def on_take(self, item):
         print(f"You have picked up {item}")
+
+    def on_drop(self, item):
+        print(f"You have dropped {item}")
