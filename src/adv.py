@@ -40,17 +40,28 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 # def __init__(self, name, health, weapon, armor, current_room, inventory):
-p1 = Player('Shayne', 100, 'Sword', 'Bronze', 'outside', ['bread'])
+p1 = Player('Shayne', 100, 'Sword', 'Bronze', room['outside'], ['bread'])
 
 # Write a loop that:
 #
-while input != 'quit':
+while True:
 # * Prints the current room name
-    print(f'Current Room: {self.current_room}\nRoom Description: {self.description}')
+    print(f'Current Room: {p1.location}\nRoom Description: {p1.description}')
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+    response = input('Which direction would you like to go? ')
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
+    if response == "q":
+        print("test")
+    elif response == "s":
+        print("test")
+    elif response == "e":
+        print("test")
+    elif response == "w":
+        print("test")
+    elif response == "n":
+        break
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
