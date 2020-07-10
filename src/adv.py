@@ -96,13 +96,19 @@ while True:
         # iterate over room items with enumerate (allows access to index values)
         for index, item in enumerate(p1.current_room.items):
 
+            isItemFound = False # keep track if item was found
+
             # checks if the requested item is in the room
             if item.name == requested_item:
+
+                isItemFound = True # set isItemFound to true
 
                 # call on_take message, remove item from room, and add to inventory
                 p1.current_room.items[index].on_take(item)
                 p1.current_room.items.remove(item)
                 p1.inventory.append(item)
+        if isItemFound == False:
+            print("That item does not exist!\n")
 
     # check if command has 2 words and first word is 'drop'     
     elif len(command) == 2 and command[0] == 'drop':
