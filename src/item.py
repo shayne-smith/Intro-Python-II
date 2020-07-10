@@ -11,7 +11,7 @@ class Item:
         print(f'{self.name}')
 
     def on_take(self, item):
-        print(f"You have picked up {item}")
+        print(f"You have picked up {item}\n")
 
     def on_drop(self, item):
-        print(f"You have dropped {item}")
+        print(f"You have dropped {item}\n")
